@@ -1,0 +1,26 @@
+CACHE MANIFEST
+# Mist 0.1
+
+NETWORK:
+*
+
+CACHE:
+# style
+style.css
+
+# scripts
+script/library.js
+script/sun.js
+
+# images
+resources/144.png
+resources/canvas.png
+resources/canvas@2x.png
+resources/ipad-landscape.png
+resources/ipad-landscape@2x.png
+resources/ipad-portrait.png
+resources/ipad-portrait@2x.png
+resources/iphone.png
+resources/linen.jpg
+resources/1.png
+resources/1@2x.png
