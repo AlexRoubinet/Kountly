@@ -13,12 +13,17 @@ body {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 }
+#app{
+	background: url(../img/bg.gif)
+}
 #app h1{
 	font-size:  5.9375em;
 	text-align: center;
 }
 #app header{
 	margin: 1.9% 0 7.3%;
+	background: #FFF;
+	padding-bottom: 01.84782609%;
 }
 #app section{
 	width: 77.8%;
@@ -33,9 +38,14 @@ body {
 	background: #fff;
 	margin: 6%;
 	border-radius: 87.0967742%;
+	position: relative;
+	float: left;
 }
 #app section p i,#app section p b{
 	position: absolute;
+	position: absolute;
+	left: 0;
+	top: 21%;
 }
 
 
