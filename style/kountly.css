@@ -28,52 +28,104 @@ body {
 	font-family: ando_lightregular;
 }
 #app{
-	background: url(../img/bg.gif)
+	background: url(../img/bg.gif);
+	height: 100%;
+}
+#app article{
+	height: 100%;
+	position: relative;
 }
 #app h1{
 	font-size:  5.9375em;
 	text-align: center;
 }
+#app h1 span{
+	background: url(../img/plus.png) no-repeat 0 0.15em;
+	display: inline-block;
+	width: 15px;
+	height: 0.5em;
+}
 #app header{
-	margin: 1.9% 0 7.3%;
+	/*margin-bottom: 7.3%;*/
+	margin-bottom: 50px;
 	background: #FFF;
-	padding-bottom: 01.84782609%;
+	/*padding: 1.9% 0 01.84782609%;*/
+	padding: 12px 0 12px;
 }
 #app section{
-	width: 77.8%;
+	/*width: 77.8%;*/
+	width: 496px;
+	height: 496px;
 	background: #ae1367;
 	margin: auto;
-	border-radius: 77.8%;
+	/*border-radius: 77.8%;*/
+	border-radius: 496px;
 	box-shadow: 0 2px 1.3px #000000 inset, 0 -3em 4.5em inset;
 }
 #app section p{
 	width: 87.0967742%;
-	padding-top: 87.0967742%;
+	height: 87.0967742%;
+	/*padding-top: 87.0967742%;*/
 	background: #fff;
-	margin: 6%;
+	margin: 6.5%;
 	border-radius: 87.0967742%;
 	position: relative;
 	float: left;
+	text-align: center;
 }
 #app section p b{
-	position: absolute;
+/*	position: absolute;
 	left: 0;
-	text-align: center;
+*/
 	font-weight: normal;
 	font-size: 11.8125em;
-	line-height: 1em;
-	margin-top: -1em;
+	line-height: 0.35em;
+/*	margin-top: -1em;
 	top: 50%;
+	width: 100%;*/
+	display: block;
+	margin-top: 153px;
 }
 #app section p i{
 	font-size: 0.33333333em;
 	line-height: 1.8em;
+	font-style: normal;
 }
-
+#app footer{
+	font-size: 6em;
+	height: 200px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: #fff;
+}
+#app footer li{
+	display: block;
+	float:left;
+	width: 33%;
+	height: 100%;
+}
+#app footer a{
+	display: block;
+	width: 140px;
+	height: 140px;
+	margin: 30px auto;
+	background-image: url(../img/pictos.png);
+	/* ir */
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+#app footer a.list{
+	background-position: 0 140px;
+}
+#app footer a.setting{
+	background-position: 0 280px;
+}
 /* en landscape la taille dépend de la hauteur */
 @media only screen  and (orientation: landscape) {	
-	#app {
-		width: 50%;
+	#app{
+		
 	}
 }
 /* a moi jusque là */
