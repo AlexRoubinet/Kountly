@@ -39,4 +39,4 @@ function Kountly(){
 	
 }
 
-$(function(){new Kountly();});
+$(function(){new Kountly();$.jQTouch(});
