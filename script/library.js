@@ -4,22 +4,755 @@
 /* Zepto v1.0rc1 - polyfill zepto event detect fx ajax form touch - zeptojs.com/license */
 (function(a){String.prototype.trim===a&&(String.prototype.trim=function(){return this.replace(/^\s+/,"").replace(/\s+$/,"")}),Array.prototype.reduce===a&&(Array.prototype.reduce=function(b){if(this===void 0||this===null)throw new TypeError;var c=Object(this),d=c.length>>>0,e=0,f;if(typeof b!="function")throw new TypeError;if(d==0&&arguments.length==1)throw new TypeError;if(arguments.length>=2)f=arguments[1];else do{if(e in c){f=c[e++];break}if(++e>=d)throw new TypeError}while(!0);while(e<d)e in c&&(f=b.call(a,f,c[e],e,c)),e++;return f})})();var Zepto=function(){function A(a){return v.call(a)=="[object Function]"}function B(a){return a instanceof Object}function C(b){var c,d;if(v.call(b)!=="[object Object]")return!1;d=A(b.constructor)&&b.constructor.prototype;if(!d||!hasOwnProperty.call(d,"isPrototypeOf"))return!1;for(c in b);return c===a||hasOwnProperty.call(b,c)}function D(a){return a instanceof Array}function E(a){return typeof a.length=="number"}function F(b){return b.filter(function(b){return b!==a&&b!==null})}function G(a){return a.length>0?[].concat.apply([],a):a}function H(a){return a.replace(/::/g,"/").replace(/([A-Z]+)([A-Z][a-z])/g,"$1_$2").replace(/([a-z\d])([A-Z])/g,"$1_$2").replace(/_/g,"-").toLowerCase()}function I(a){return a in i?i[a]:i[a]=new RegExp("(^|\\s)"+a+"(\\s|$)")}function J(a,b){return typeof b=="number"&&!k[H(a)]?b+"px":b}function K(a){var b,c;return h[a]||(b=g.createElement(a),g.body.appendChild(b),c=j(b,"").getPropertyValue("display"),b.parentNode.removeChild(b),c=="none"&&(c="block"),h[a]=c),h[a]}function L(b,d){return d===a?c(b):c(b).filter(d)}function M(a,b,c,d){return A(b)?b.call(a,c,d):b}function N(a,b,d){var e=a%2?b:b.parentNode;e?e.insertBefore(d,a?a==1?e.firstChild:a==2?b:null:b.nextSibling):c(d).remove()}function O(a,b){b(a);for(var c in a.childNodes)O(a.childNodes[c],b)}var a,b,c,d,e=[],f=e.slice,g=window.document,h={},i={},j=g.defaultView.getComputedStyle,k={"column-count":1,columns:1,"font-weight":1,"line-height":1,opacity:1,"z-index":1,zoom:1},l=/^\s*<(\w+|!)[^>]*>/,m=[1,3,8,9,11],n=["after","prepend","before","append"],o=g.createElement("table"),p=g.createElement("tr"),q={tr:g.createElement("tbody"),tbody:o,thead:o,tfoot:o,td:p,th:p,"*":g.createElement("div")},r=/complete|loaded|interactive/,s=/^\.([\w-]+)$/,t=/^#([\w-]+)$/,u=/^[\w-]+$/,v={}.toString,w={},x,y,z=g.createElement("div");return w.matches=function(a,b){if(!a||a.nodeType!==1)return!1;var c=a.webkitMatchesSelector||a.mozMatchesSelector||a.oMatchesSelector||a.matchesSelector;if(c)return c.call(a,b);var d,e=a.parentNode,f=!e;return f&&(e=z).appendChild(a),d=~w.qsa(e,b).indexOf(a),f&&z.removeChild(a),d},x=function(a){return a.replace(/-+(.)?/g,function(a,b){return b?b.toUpperCase():""})},y=function(a){return a.filter(function(b,c){return a.indexOf(b)==c})},w.fragment=function(b,d){d===a&&(d=l.test(b)&&RegExp.$1),d in q||(d="*");var e=q[d];return e.innerHTML=""+b,c.each(f.call(e.childNodes),function(){e.removeChild(this)})},w.Z=function(a,b){return a=a||[],a.__proto__=arguments.callee.prototype,a.selector=b||"",a},w.isZ=function(a){return a instanceof w.Z},w.init=function(b,d){if(!b)return w.Z();if(A(b))return c(g).ready(b);if(w.isZ(b))return b;var e;if(D(b))e=F(b);else if(C(b))e=[c.extend({},b)],b=null;else if(m.indexOf(b.nodeType)>=0||b===window)e=[b],b=null;else if(l.test(b))e=w.fragment(b.trim(),RegExp.$1),b=null;else{if(d!==a)return c(d).find(b);e=w.qsa(g,b)}return w.Z(e,b)},c=function(a,b){return w.init(a,b)},c.extend=function(c){return f.call(arguments,1).forEach(function(d){for(b in d)d[b]!==a&&(c[b]=d[b])}),c},w.qsa=function(a,b){var c;return a===g&&t.test(b)?(c=a.getElementById(RegExp.$1))?[c]:e:a.nodeType!==1&&a.nodeType!==9?e:f.call(s.test(b)?a.getElementsByClassName(RegExp.$1):u.test(b)?a.getElementsByTagName(b):a.querySelectorAll(b))},c.isFunction=A,c.isObject=B,c.isArray=D,c.isPlainObject=C,c.inArray=function(a,b,c){return e.indexOf.call(b,a,c)},c.trim=function(a){return a.trim()},c.uuid=0,c.map=function(a,b){var c,d=[],e,f;if(E(a))for(e=0;e<a.length;e++)c=b(a[e],e),c!=null&&d.push(c);else for(f in a)c=b(a[f],f),c!=null&&d.push(c);return G(d)},c.each=function(a,b){var c,d;if(E(a)){for(c=0;c<a.length;c++)if(b.call(a[c],c,a[c])===!1)return a}else for(d in a)if(b.call(a[d],d,a[d])===!1)return a;return a},c.fn={forEach:e.forEach,reduce:e.reduce,push:e.push,indexOf:e.indexOf,concat:e.concat,map:function(a){return c.map(this,function(b,c){return a.call(b,c,b)})},slice:function(){return c(f.apply(this,arguments))},ready:function(a){return r.test(g.readyState)?a(c):g.addEventListener("DOMContentLoaded",function(){a(c)},!1),this},get:function(b){return b===a?f.call(this):this[b]},toArray:function(){return this.get()},size:function(){return this.length},remove:function(){return this.each(function(){this.parentNode!=null&&this.parentNode.removeChild(this)})},each:function(a){return this.forEach(function(b,c){a.call(b,c,b)}),this},filter:function(a){return c([].filter.call(this,function(b){return w.matches(b,a)}))},add:function(a,b){return c(y(this.concat(c(a,b))))},is:function(a){return this.length>0&&w.matches(this[0],a)},not:function(b){var d=[];if(A(b)&&b.call!==a)this.each(function(a){b.call(this,a)||d.push(this)});else{var e=typeof b=="string"?this.filter(b):E(b)&&A(b.item)?f.call(b):c(b);this.forEach(function(a){e.indexOf(a)<0&&d.push(a)})}return c(d)},eq:function(a){return a===-1?this.slice(a):this.slice(a,+a+1)},first:function(){var a=this[0];return a&&!B(a)?a:c(a)},last:function(){var a=this[this.length-1];return a&&!B(a)?a:c(a)},find:function(a){var b;return this.length==1?b=w.qsa(this[0],a):b=this.map(function(){return w.qsa(this,a)}),c(b)},closest:function(a,b){var d=this[0];while(d&&!w.matches(d,a))d=d!==b&&d!==g&&d.parentNode;return c(d)},parents:function(a){var b=[],d=this;while(d.length>0)d=c.map(d,function(a){if((a=a.parentNode)&&a!==g&&b.indexOf(a)<0)return b.push(a),a});return L(b,a)},parent:function(a){return L(y(this.pluck("parentNode")),a)},children:function(a){return L(this.map(function(){return f.call(this.children)}),a)},siblings:function(a){return L(this.map(function(a,b){return f.call(b.parentNode.children).filter(function(a){return a!==b})}),a)},empty:function(){return this.each(function(){this.innerHTML=""})},pluck:function(a){return this.map(function(){return this[a]})},show:function(){return this.each(function(){this.style.display=="none"&&(this.style.display=null),j(this,"").getPropertyValue("display")=="none"&&(this.style.display=K(this.nodeName))})},replaceWith:function(a){return this.before(a).remove()},wrap:function(a){return this.each(function(){c(this).wrapAll(c(a)[0].cloneNode(!1))})},wrapAll:function(a){return this[0]&&(c(this[0]).before(a=c(a)),a.append(this)),this},unwrap:function(){return this.parent().each(function(){c(this).replaceWith(c(this).children())}),this},clone:function(){return c(this.map(function(){return this.cloneNode(!0)}))},hide:function(){return this.css("display","none")},toggle:function(b){return(b===a?this.css("display")=="none":b)?this.show():this.hide()},prev:function(){return c(this.pluck("previousElementSibling"))},next:function(){return c(this.pluck("nextElementSibling"))},html:function(b){return b===a?this.length>0?this[0].innerHTML:null:this.each(function(a){var d=this.innerHTML;c(this).empty().append(M(this,b,a,d))})},text:function(b){return b===a?this.length>0?this[0].textContent:null:this.each(function(){this.textContent=b})},attr:function(c,d){var e;return typeof c=="string"&&d===a?this.length==0||this[0].nodeType!==1?a:c=="value"&&this[0].nodeName=="INPUT"?this.val():!(e=this[0].getAttribute(c))&&c in this[0]?this[0][c]:e:this.each(function(a){if(this.nodeType!==1)return;if(B(c))for(b in c)this.setAttribute(b,c[b]);else this.setAttribute(c,M(this,d,a,this.getAttribute(c)))})},removeAttr:function(a){return this.each(function(){this.nodeType===1&&this.removeAttribute(a)})},prop:function(b,c){return c===a?this[0]?this[0][b]:a:this.each(function(a){this[b]=M(this,c,a,this[b])})},data:function(b,c){var d=this.attr("data-"+H(b),c);return d!==null?d:a},val:function(b){return b===a?this.length>0?this[0].value:a:this.each(function(a){this.value=M(this,b,a,this.value)})},offset:function(){if(this.length==0)return null;var a=this[0].getBoundingClientRect();return{left:a.left+window.pageXOffset,top:a.top+window.pageYOffset,width:a.width,height:a.height}},css:function(c,d){if(d===a&&typeof c=="string")return this.length==0?a:this[0].style[x(c)]||j(this[0],"").getPropertyValue(c);var e="";for(b in c)typeof c[b]=="string"&&c[b]==""?this.each(function(){this.style.removeProperty(H(b))}):e+=H(b)+":"+J(b,c[b])+";";return typeof c=="string"&&(d==""?this.each(function(){this.style.removeProperty(H(c))}):e=H(c)+":"+J(c,d)),this.each(function(){this.style.cssText+=";"+e})},index:function(a){return a?this.indexOf(c(a)[0]):this.parent().children().indexOf(this[0])},hasClass:function(a){return this.length<1?!1:I(a).test(this[0].className)},addClass:function(a){return this.each(function(b){d=[];var e=this.className,f=M(this,a,b,e);f.split(/\s+/g).forEach(function(a){c(this).hasClass(a)||d.push(a)},this),d.length&&(this.className+=(e?" ":"")+d.join(" "))})},removeClass:function(b){return this.each(function(c){if(b===a)return this.className="";d=this.className,M(this,b,c,d).split(/\s+/g).forEach(function(a){d=d.replace(I(a)," ")}),this.className=d.trim()})},toggleClass:function(b,d){return this.each(function(e){var f=M(this,b,e,this.className);(d===a?!c(this).hasClass(f):d)?c(this).addClass(f):c(this).removeClass(f)})}},["width","height"].forEach(function(b){c.fn[b]=function(d){var e,f=b.replace(/./,function(a){return a[0].toUpperCase()});return d===a?this[0]==window?window["inner"+f]:this[0]==g?g.documentElement["offset"+f]:(e=this.offset())&&e[b]:this.each(function(a){var e=c(this);e.css(b,M(this,d,a,e[b]()))})}}),n.forEach(function(a,b){c.fn[a]=function(){var a=c.map(arguments,function(a){return B(a)?a:w.fragment(a)});if(a.length<1)return this;var d=this.length,e=d>1,f=b<2;return this.each(function(c,g){for(var h=0;h<a.length;h++){var i=a[f?a.length-h-1:h];O(i,function(a){a.nodeName!=null&&a.nodeName.toUpperCase()==="SCRIPT"&&(!a.type||a.type==="text/javascript")&&window.eval.call(window,a.innerHTML)}),e&&c<d-1&&(i=i.cloneNode(!0)),N(b,g,i)}})},c.fn[b%2?a+"To":"insert"+(b?"Before":"After")]=function(b){return c(b)[a](this),this}}),w.Z.prototype=c.fn,w.camelize=x,w.uniq=y,c.zepto=w,c}();window.Zepto=Zepto,"$"in window||(window.$=Zepto),function(a){function f(a){return a._zid||(a._zid=d++)}function g(a,b,d,e){b=h(b);if(b.ns)var g=i(b.ns);return(c[f(a)]||[]).filter(function(a){return a&&(!b.e||a.e==b.e)&&(!b.ns||g.test(a.ns))&&(!d||f(a.fn)===f(d))&&(!e||a.sel==e)})}function h(a){var b=(""+a).split(".");return{e:b[0],ns:b.slice(1).sort().join(" ")}}function i(a){return new RegExp("(?:^| )"+a.replace(" "," .* ?")+"(?: |$)")}function j(b,c,d){a.isObject(b)?a.each(b,d):b.split(/\s/).forEach(function(a){d(a,c)})}function k(b,d,e,g,i,k){k=!!k;var l=f(b),m=c[l]||(c[l]=[]);j(d,e,function(c,d){var e=i&&i(d,c),f=e||d,j=function(a){var c=f.apply(b,[a].concat(a.data));return c===!1&&a.preventDefault(),c},l=a.extend(h(c),{fn:d,proxy:j,sel:g,del:e,i:m.length});m.push(l),b.addEventListener(l.e,j,k)})}function l(a,b,d,e){var h=f(a);j(b||"",d,function(b,d){g(a,b,d,e).forEach(function(b){delete c[h][b.i],a.removeEventListener(b.e,b.proxy,!1)})})}function p(b){var c=a.extend({originalEvent:b},b);return a.each(o,function(a,d){c[a]=function(){return this[d]=m,b[a].apply(b,arguments)},c[d]=n}),c}function q(a){if(!("defaultPrevented"in a)){a.defaultPrevented=!1;var b=a.preventDefault;a.preventDefault=function(){this.defaultPrevented=!0,b.call(this)}}}var b=a.zepto.qsa,c={},d=1,e={};e.click=e.mousedown=e.mouseup=e.mousemove="MouseEvents",a.event={add:k,remove:l},a.proxy=function(b,c){if(a.isFunction(b)){var d=function(){return b.apply(c,arguments)};return d._zid=f(b),d}if(typeof c=="string")return a.proxy(b[c],b);throw new TypeError("expected function")},a.fn.bind=function(a,b){return this.each(function(){k(this,a,b)})},a.fn.unbind=function(a,b){return this.each(function(){l(this,a,b)})},a.fn.one=function(a,b){return this.each(function(c,d){k(this,a,b,null,function(a,b){return function(){var c=a.apply(d,arguments);return l(d,b,a),c}})})};var m=function(){return!0},n=function(){return!1},o={preventDefault:"isDefaultPrevented",stopImmediatePropagation:"isImmediatePropagationStopped",stopPropagation:"isPropagationStopped"};a.fn.delegate=function(b,c,d){var e=!1;if(c=="blur"||c=="focus")a.iswebkit?c=c=="blur"?"focusout":c=="focus"?"focusin":c:e=!0;return this.each(function(f,g){k(g,c,d,b,function(c){return function(d){var e,f=a(d.target).closest(b,g).get(0);if(f)return e=a.extend(p(d),{currentTarget:f,liveFired:g}),c.apply(f,[e].concat([].slice.call(arguments,1)))}},e)})},a.fn.undelegate=function(a,b,c){return this.each(function(){l(this,b,c,a)})},a.fn.live=function(b,c){return a(document.body).delegate(this.selector,b,c),this},a.fn.die=function(b,c){return a(document.body).undelegate(this.selector,b,c),this},a.fn.on=function(b,c,d){return c==undefined||a.isFunction(c)?this.bind(b,c):this.delegate(c,b,d)},a.fn.off=function(b,c,d){return c==undefined||a.isFunction(c)?this.unbind(b,c):this.undelegate(c,b,d)},a.fn.trigger=function(b,c){return typeof b=="string"&&(b=a.Event(b)),q(b),b.data=c,this.each(function(){"dispatchEvent"in this&&this.dispatchEvent(b)})},a.fn.triggerHandler=function(b,c){var d,e;return this.each(function(f,h){d=p(typeof b=="string"?a.Event(b):b),d.data=c,d.target=h,a.each(g(h,b.type||b),function(a,b){e=b.proxy(d);if(d.isImmediatePropagationStopped())return!1})}),e},"focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout change select keydown keypress keyup error".split(" ").forEach(function(b){a.fn[b]=function(a){return this.bind(b,a)}}),["focus","blur"].forEach(function(b){a.fn[b]=function(a){if(a)this.bind(b,a);else if(this.length)try{this.get(0)[b]()}catch(c){}return this}}),a.Event=function(a,b){var c=document.createEvent(e[a]||"Events"),d=!0;if(b)for(var f in b)f=="bubbles"?d=!!b[f]:c[f]=b[f];return c.initEvent(a,d,!0,null,null,null,null,null,null,null,null,null,null,null,null),c}}(Zepto),function(a){function b(a){var b=this.os={},c=this.browser={},d=a.match(/WebKit\/([\d.]+)/),e=a.match(/(Android)\s+([\d.]+)/),f=a.match(/(iPad).*OS\s([\d_]+)/),g=!f&&a.match(/(iPhone\sOS)\s([\d_]+)/),h=a.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),i=h&&a.match(/TouchPad/),j=a.match(/Kindle\/([\d.]+)/),k=a.match(/Silk\/([\d._]+)/),l=a.match(/(BlackBerry).*Version\/([\d.]+)/);if(c.webkit=!!d)c.version=d[1];e&&(b.android=!0,b.version=e[2]),g&&(b.ios=b.iphone=!0,b.version=g[2].replace(/_/g,".")),f&&(b.ios=b.ipad=!0,b.version=f[2].replace(/_/g,".")),h&&(b.webos=!0,b.version=h[2]),i&&(b.touchpad=!0),l&&(b.blackberry=!0,b.version=l[2]),j&&(b.kindle=!0,b.version=j[1]),k&&(c.silk=!0,c.version=k[1]),!k&&b.android&&a.match(/Kindle Fire/)&&(c.silk=!0)}b.call(a,navigator.userAgent),a.__detect=b}(Zepto),function(a,b){function l(a){return a.toLowerCase()}function m(a){return d?d+a:l(a)}var c="",d,e,f,g={Webkit:"webkit",Moz:"",O:"o",ms:"MS"},h=window.document,i=h.createElement("div"),j=/^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,k={};a.each(g,function(a,e){if(i.style[a+"TransitionProperty"]!==b)return c="-"+l(a)+"-",d=e,!1}),k[c+"transition-property"]=k[c+"transition-duration"]=k[c+"transition-timing-function"]=k[c+"animation-name"]=k[c+"animation-duration"]="",a.fx={off:d===b&&i.style.transitionProperty===b,cssPrefix:c,transitionEnd:m("TransitionEnd"),animationEnd:m("AnimationEnd")},a.fn.animate=function(b,c,d,e){return a.isObject(c)&&(d=c.easing,e=c.complete,c=c.duration),c&&(c/=1e3),this.anim(b,c,d,e)},a.fn.anim=function(d,e,f,g){var h,i={},l,m=this,n,o=a.fx.transitionEnd;e===b&&(e=.4),a.fx.off&&(e=0);if(typeof d=="string")i[c+"animation-name"]=d,i[c+"animation-duration"]=e+"s",o=a.fx.animationEnd;else{for(l in d)j.test(l)?(h||(h=[]),h.push(l+"("+d[l]+")")):i[l]=d[l];h&&(i[c+"transform"]=h.join(" ")),!a.fx.off&&typeof d=="object"&&(i[c+"transition-property"]=Object.keys(d).join(", "),i[c+"transition-duration"]=e+"s",i[c+"transition-timing-function"]=f||"linear")}return n=function(b){if(typeof b!="undefined"){if(b.target!==b.currentTarget)return;a(b.target).unbind(o,arguments.callee)}a(this).css(k),g&&g.call(this)},e>0&&this.bind(o,n),setTimeout(function(){m.css(i),e<=0&&setTimeout(function(){m.each(function(){n.call(this)})},0)},0),this},i=null}(Zepto),function($){function triggerAndReturn(a,b,c){var d=$.Event(b);return $(a).trigger(d,c),!d.defaultPrevented}function triggerGlobal(a,b,c,d){if(a.global)return triggerAndReturn(b||document,c,d)}function ajaxStart(a){a.global&&$.active++===0&&triggerGlobal(a,null,"ajaxStart")}function ajaxStop(a){a.global&&!--$.active&&triggerGlobal(a,null,"ajaxStop")}function ajaxBeforeSend(a,b){var c=b.context;if(b.beforeSend.call(c,a,b)===!1||triggerGlobal(b,c,"ajaxBeforeSend",[a,b])===!1)return!1;triggerGlobal(b,c,"ajaxSend",[a,b])}function ajaxSuccess(a,b,c){var d=c.context,e="success";c.success.call(d,a,e,b),triggerGlobal(c,d,"ajaxSuccess",[b,c,a]),ajaxComplete(e,b,c)}function ajaxError(a,b,c,d){var e=d.context;d.error.call(e,c,b,a),triggerGlobal(d,e,"ajaxError",[c,d,a]),ajaxComplete(b,c,d)}function ajaxComplete(a,b,c){var d=c.context;c.complete.call(d,b,a),triggerGlobal(c,d,"ajaxComplete",[b,c]),ajaxStop(c)}function empty(){}function mimeToDataType(a){return a&&(a==htmlType?"html":a==jsonType?"json":scriptTypeRE.test(a)?"script":xmlTypeRE.test(a)&&"xml")||"text"}function appendQuery(a,b){return(a+"&"+b).replace(/[&?]{1,2}/,"?")}function serializeData(a){isObject(a.data)&&(a.data=$.param(a.data)),a.data&&(!a.type||a.type.toUpperCase()=="GET")&&(a.url=appendQuery(a.url,a.data))}function serialize(a,b,c,d){var e=$.isArray(b);$.each(b,function(b,f){d&&(b=c?d:d+"["+(e?"":b)+"]"),!d&&e?a.add(f.name,f.value):(c?$.isArray(f):isObject(f))?serialize(a,f,c,b):a.add(b,f)})}var jsonpID=0,isObject=$.isObject,document=window.document,key,name,rscript=/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,scriptTypeRE=/^(?:text|application)\/javascript/i,xmlTypeRE=/^(?:text|application)\/xml/i,jsonType="application/json",htmlType="text/html",blankRE=/^\s*$/;$.active=0,$.ajaxJSONP=function(a){var b="jsonp"+ ++jsonpID,c=document.createElement("script"),d=function(){$(c).remove(),b in window&&(window[b]=empty),ajaxComplete("abort",e,a)},e={abort:d},f;return a.error&&(c.onerror=function(){e.abort(),a.error()}),window[b]=function(d){clearTimeout(f),$(c).remove(),delete window[b],ajaxSuccess(d,e,a)},serializeData(a),c.src=a.url.replace(/=\?/,"="+b),$("head").append(c),a.timeout>0&&(f=setTimeout(function(){e.abort(),ajaxComplete("timeout",e,a)},a.timeout)),e},$.ajaxSettings={type:"GET",beforeSend:empty,success:empty,error:empty,complete:empty,context:null,global:!0,xhr:function(){return new window.XMLHttpRequest},accepts:{script:"text/javascript, application/javascript",json:jsonType,xml:"application/xml, text/xml",html:htmlType,text:"text/plain"},crossDomain:!1,timeout:0},$.ajax=function(options){var settings=$.extend({},options||{});for(key in $.ajaxSettings)settings[key]===undefined&&(settings[key]=$.ajaxSettings[key]);ajaxStart(settings),settings.crossDomain||(settings.crossDomain=/^([\w-]+:)?\/\/([^\/]+)/.test(settings.url)&&RegExp.$2!=window.location.host);var dataType=settings.dataType,hasPlaceholder=/=\?/.test(settings.url);if(dataType=="jsonp"||hasPlaceholder)return hasPlaceholder||(settings.url=appendQuery(settings.url,"callback=?")),$.ajaxJSONP(settings);settings.url||(settings.url=window.location.toString()),serializeData(settings);var mime=settings.accepts[dataType],baseHeaders={},protocol=/^([\w-]+:)\/\//.test(settings.url)?RegExp.$1:window.location.protocol,xhr=$.ajaxSettings.xhr(),abortTimeout;settings.crossDomain||(baseHeaders["X-Requested-With"]="XMLHttpRequest"),mime&&(baseHeaders.Accept=mime,mime.indexOf(",")>-1&&(mime=mime.split(",",2)[0]),xhr.overrideMimeType&&xhr.overrideMimeType(mime));if(settings.contentType||settings.data&&settings.type.toUpperCase()!="GET")baseHeaders["Content-Type"]=settings.contentType||"application/x-www-form-urlencoded";settings.headers=$.extend(baseHeaders,settings.headers||{}),xhr.onreadystatechange=function(){if(xhr.readyState==4){clearTimeout(abortTimeout);var result,error=!1;if(xhr.status>=200&&xhr.status<300||xhr.status==304||xhr.status==0&&protocol=="file:"){dataType=dataType||mimeToDataType(xhr.getResponseHeader("content-type")),result=xhr.responseText;try{dataType=="script"?(1,eval)(result):dataType=="xml"?result=xhr.responseXML:dataType=="json"&&(result=blankRE.test(result)?null:JSON.parse(result))}catch(e){error=e}error?ajaxError(error,"parsererror",xhr,settings):ajaxSuccess(result,xhr,settings)}else ajaxError(null,"error",xhr,settings)}};var async="async"in settings?settings.async:!0;xhr.open(settings.type,settings.url,async);for(name in settings.headers)xhr.setRequestHeader(name,settings.headers[name]);return ajaxBeforeSend(xhr,settings)===!1?(xhr.abort(),!1):(settings.timeout>0&&(abortTimeout=setTimeout(function(){xhr.onreadystatechange=empty,xhr.abort(),ajaxError(null,"timeout",xhr,settings)},settings.timeout)),xhr.send(settings.data?settings.data:null),xhr)},$.get=function(a,b){return $.ajax({url:a,success:b})},$.post=function(a,b,c,d){return $.isFunction(b)&&(d=d||c,c=b,b=null),$.ajax({type:"POST",url:a,data:b,success:c,dataType:d})},$.getJSON=function(a,b){return $.ajax({url:a,success:b,dataType:"json"})},$.fn.load=function(a,b){if(!this.length)return this;var c=this,d=a.split(/\s/),e;return d.length>1&&(a=d[0],e=d[1]),$.get(a,function(a){c.html(e?$(document.createElement("div")).html(a.replace(rscript,"")).find(e).html():a),b&&b.call(c)}),this};var escape=encodeURIComponent;$.param=function(a,b){var c=[];return c.add=function(a,b){this.push(escape(a)+"="+escape(b))},serialize(c,a,b),c.join("&").replace("%20","+")}}(Zepto),function(a){a.fn.serializeArray=function(){var b=[],c;return a(Array.prototype.slice.call(this.get(0).elements)).each(function(){c=a(this);var d=c.attr("type");this.nodeName.toLowerCase()!="fieldset"&&!this.disabled&&d!="submit"&&d!="reset"&&d!="button"&&(d!="radio"&&d!="checkbox"||this.checked)&&b.push({name:c.attr("name"),value:c.val()})}),b},a.fn.serialize=function(){var a=[];return this.serializeArray().forEach(function(b){a.push(encodeURIComponent(b.name)+"="+encodeURIComponent(b.value))}),a.join("&")},a.fn.submit=function(b){if(b)this.bind("submit",b);else if(this.length){var c=a.Event("submit");this.eq(0).trigger(c),c.defaultPrevented||this.get(0).submit()}return this}}(Zepto),function(a){function d(a){return"tagName"in a?a:a.parentNode}function e(a,b,c,d){var e=Math.abs(a-b),f=Math.abs(c-d);return e>=f?a-b>0?"Left":"Right":c-d>0?"Up":"Down"}function h(){g=null,b.last&&(b.el.trigger("longTap"),b={})}function i(){g&&clearTimeout(g),g=null}var b={},c,f=750,g;a(document).ready(function(){var j,k;a(document.body).bind("touchstart",function(e){j=Date.now(),k=j-(b.last||j),b.el=a(d(e.touches[0].target)),c&&clearTimeout(c),b.x1=e.touches[0].pageX,b.y1=e.touches[0].pageY,k>0&&k<=250&&(b.isDoubleTap=!0),b.last=j,g=setTimeout(h,f)}).bind("touchmove",function(a){i(),b.x2=a.touches[0].pageX,b.y2=a.touches[0].pageY}).bind("touchend",function(a){i(),b.isDoubleTap?(b.el.trigger("doubleTap"),b={}):b.x2&&Math.abs(b.x1-b.x2)>30||b.y2&&Math.abs(b.y1-b.y2)>30?(b.el.trigger("swipe")&&b.el.trigger("swipe"+e(b.x1,b.x2,b.y1,b.y2)),b={}):"last"in b&&(b.el.trigger("tap"),c=setTimeout(function(){c=null,b.el.trigger("singleTap"),b={}},250))}).bind("touchcancel",function(){c&&clearTimeout(c),g&&clearTimeout(g),g=c=null,b={}})}),["swipe","swipeLeft","swipeRight","swipeUp","swipeDown","doubleTap","tap","singleTap","longTap"].forEach(function(b){a.fn[b]=function(a){return this.bind(b,a)}})}(Zepto);
 
-//jq touch 
-(function(){jQTouchCore=function(j){function n(a){"string"===typeof a.selector&&"string"===typeof a.name&&l.push(a)}function v(a,b){k.unshift({page:a,animation:b,hash:"#"+a.attr("id"),id:a.attr("id")})}function C(a){var b=c(a.target);b.is(h.join(", "))||(b=c(a.target).closest(h.join(", ")));b&&b.attr("href")&&!b.isExternalLink()&&a.preventDefault();c.support.touch||c(a.target).trigger("tap",a)}function w(a,b,d,g){function s(){var h=D;c.support.animationEvents&&d&&e.useAnimations?(a.unbind("webkitAnimationEnd",
-s),a.removeClass("current "+f+" out"),b.removeClass(f),i.removeClass("animating animating3d"),!0===e.trackScrollPositions&&(b.css("top",-b.data("lastScroll")),setTimeout(function(){b.css("top",0);window.scroll(0,b.data("lastScroll"));c(".scroll",b).each(function(){this.scrollTop=-c(this).data("lastScroll")})},0))):(a.removeClass(f+" out current"),h+=260);setTimeout(function(){b.removeClass("in")},h);m=b;g?k.shift():v(m,d);a.unselect();x(m.attr("id"));b.trigger("pageAnimationEnd",{direction:"in",animation:d});
-a.trigger("pageAnimationEnd",{direction:"out",animation:d})}g=g?g:!1;if(void 0===b||0===b.length||b.hasClass("current"))return c.fn.unselect(),!1;c(":focus").trigger("blur");a.trigger("pageAnimationStart",{direction:"out",back:g});b.trigger("pageAnimationStart",{direction:"in",back:g});if(c.support.animationEvents&&d&&e.useAnimations){if(!c.support.transform3d&&d.is3d)d.name=e.defaultAnimation;var f=d.name,h=d.is3d?"animating3d":"";g&&(f=f.replace(/left|right|up|down|in|out/,E));a.bind("webkitAnimationEnd",
-s);i.addClass("animating "+h);h=window.pageYOffset;!0===e.trackScrollPositions&&b.css("top",window.pageYOffset-(b.data("lastScroll")||0));b.addClass(f+" in current");a.addClass(f+" out");!0===e.trackScrollPositions&&(a.data("lastScroll",h),c(".scroll",a).each(function(){c(this).data("lastScroll",this.scrollTop)}))}else b.addClass("current in"),s();return!0}function E(a){return{up:"down",down:"up",left:"right",right:"left","in":"out",out:"in"}[a]||a}function q(){1===k.length&&window.history.go(-1);
-var a=k[0];return w(a.page,k[1].page,a.animation,!0)?o:!1}function p(a,b){var d=k[0].page;if("string"===typeof b)for(var g=0,e=l.length;g<e;g++)if(l[g].name===b){b=l[g];break}if("string"===typeof a){g=c(a);if(1>g.length){t(a,{animation:b});return}a=g}return w(d,a,b)?o:!1}function F(){if(location.hash===k[0].hash)return!0;if(""===location.hash||k[1]&&location.hash===k[1].hash)return q(),!0;p(c(location.hash),e.defaultAnimation)}function y(a){for(var b,d=0,c=l.length;d<c;d++)if(a.is(l[d].selector)){b=
-l[d];break}if(!b)b=e.defaultAnimation;return b}function z(a,b){var d=null,e=document.createElement("div");e.innerHTML=a;c(e).children().each(function(){var a=c(this);a.attr("id")||a.attr("id","page-"+ ++G);c("#"+a.attr("id")).remove();i.append(a);i.trigger("pageInserted",{page:a});if(a.hasClass("current")||!d)d=a});return null!==d?(p(d,b),d):!1}function H(){i.css("minHeight",1E3);scrollTo(0,0);i.css("minHeight",window.innerHeight);r=90==Math.abs(window.orientation)?"landscape":"portrait";i.removeClass("portrait landscape").addClass(r).trigger("turn",
-{orientation:r})}function x(a){location.hash="#"+a.replace(/^#/,"")}function t(a,b){var d=c.extend({},{data:null,method:"GET",animation:null,callback:null,$referrer:null},b);"#"!=a?c.ajax({url:a,data:d.data,type:d.method,success:function(a){if(a=z(a,d.animation))"GET"==d.method&&!0===e.cacheGetRequests&&d.$referrer&&d.$referrer.attr("href","#"+a.attr("id")),d.callback&&d.callback(!0)},error:function(){d.$referrer&&d.$referrer.unselect();d.callback&&d.callback(!1)}}):d.$referrer&&d.$referrer.unselect()}
-function A(a,b){c(":focus").trigger("blur");a.preventDefault();var d="string"===typeof a?c(a).eq(0):a.target?c(a.target):c(a);return d.length&&d.is(e.formSelector)&&d.attr("action")?(t(d.attr("action"),{data:d.serialize(),method:d.attr("method")||"POST",animation:y(d),callback:b}),!1):!0}function I(a){a=a.closest("form");return 0!==a.length?(a.trigger("submit"),!1):!0}function J(){var a,b,d,c;a=document.getElementsByTagName("head")[0];b=document.body;d=document.createElement("style");d.textContent=
-"@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-webkit-transform-3d){#jqt-3dtest{height:3px}}";c=document.createElement("div");c.id="jqt-3dtest";a.appendChild(d);b.appendChild(c);a=3===c.offsetHeight;d.parentNode.removeChild(d);c.parentNode.removeChild(c);return a}function K(a){var b=c(a.target),a=h.join(", ");b.is(a)||(b=b.closest(a));b.length&&b.attr("href")&&b.addClass("active");b.on(c.support.touch?"touchmove":"mousemove",function(){b.removeClass("active")});b.on("touchend",function(){b.unbind("touchmove mousemove")})}
-function L(a){var b=c(a.target);b.is(h.join(", "))||(b=b.closest(h.join(", ")));if(!b.length||!b.attr("href"))return!1;var a=b.attr("target"),d=b.prop("hash"),g=b.attr("href"),f=null;if(b.isExternalLink())return b.unselect(),!0;if(b.is(e.backSelector))q(d);else if(b.is(e.submitSelector))I(b);else{if("_webapp"===a)return window.location=g,!1;if("#"===g)return b.unselect(),!0;f=y(b);d&&"#"!==d?(b.addClass("active"),p(c(d).data("referrer",b),f,b.hasClass("reverse"))):(b.addClass("loading active"),t(b.attr("href"),
-{animation:f,callback:function(){b.removeClass("loading");setTimeout(c.fn.unselect,250,b)},$referrer:b}));return!1}}var c=j.framework,i,M=c("head"),k=[],G=0,e={},m="",r="portrait",h=[],o={},D=100,B=jQTouchCore.prototype.extensions,l=[],f="",u={addGlossToIcon:!0,backSelector:".back, .cancel, .goback",cacheGetRequests:!0,debug:!0,defaultAnimation:"slideleft",fixedViewport:!0,formSelector:"form",fullScreen:!0,fullScreenClass:"fullscreen",icon:null,icon4:null,preloadImages:!1,startupScreen:null,statusBar:"default",
-submitSelector:".submit",touchSelector:"a, .touch",trackScrollPositions:!0,useAnimations:!0,useFastTouch:!0,useTouchScroll:!0,animations:[{name:"cubeleft",selector:".cubeleft, .cube",is3d:!0},{name:"cuberight",selector:".cuberight",is3d:!0},{name:"dissolve",selector:".dissolve"},{name:"fade",selector:".fade"},{name:"flipleft",selector:".flipleft, .flip",is3d:!0},{name:"flipright",selector:".flipright",is3d:!0},{name:"pop",selector:".pop",is3d:!0},{name:"swapleft",selector:".swap",is3d:!0},{name:"slidedown",
-selector:".slidedown"},{name:"slideright",selector:".slideright"},{name:"slideup",selector:".slideup"},{name:"slideleft",selector:".slideleft, .slide, #jqt > * > ul li a"}]};(function(a){e=c.extend({},u,a);if(e.preloadImages)for(a=e.preloadImages.length-1;0<=a;a--)(new Image).src=e.preloadImages[a];a=e.addGlossToIcon?"":"-precomposed";e.icon&&(f+='<link rel="apple-touch-icon'+a+'" href="'+e.icon+'" />');e.icon4&&(f+='<link rel="apple-touch-icon'+a+'" sizes="114x114" href="'+e.icon4+'" />');e.startupScreen&&
-(f+='<link rel="apple-touch-startup-image" href="'+e.startupScreen+'" />');e.fixedViewport&&(f+='<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>');e.fullScreen&&(f+='<meta name="apple-mobile-web-app-capable" content="yes" />',e.statusBar&&(f+='<meta name="apple-mobile-web-app-status-bar-style" content="'+e.statusBar+'" />'));f&&M.prepend(f)})(j);c(document).ready(function(){if(!c.support)c.support={};c.support.animationEvents="undefined"!=
-typeof window.WebKitAnimationEvent;c.support.touch="undefined"!=typeof window.TouchEvent&&-1<window.navigator.userAgent.indexOf("Mobile")&&e.useFastTouch;c.support.transform3d=J();c.support.ios5=/OS (5(_\d+)*) like Mac OS X/i.test(window.navigator.userAgent);c.fn.isExternalLink=function(){var a=c(this);return"_blank"==a.attr("target")||"external"==a.attr("rel")||a.is('a[href^="http://maps.google.com"], a[href^="mailto:"], a[href^="tel:"], a[href^="javascript:"], a[href*="youtube.com/v"], a[href*="youtube.com/watch"]')};
-c.fn.makeActive=function(){return c(this).addClass("active")};c.fn.unselect=function(a){a?a.removeClass("active"):c(".active").removeClass("active")};for(var a=0,b=B.length;a<b;a++){var d=B[a];c.isFunction(d)&&c.extend(o,d(o))}a=0;for(b=u.animations.length;a<b;a++){d=u.animations[a];if(void 0!==e[d.name+"Selector"])d.selector=e[d.name+"Selector"];n(d)}h.push(e.touchSelector);h.push(e.backSelector);h.push(e.submitSelector);c(h.join(", ")).css("-webkit-touch-callout","none");i=c("#jqt");a=[];0===i.length&&
-(i=c(document.body).attr("id","jqt"));c.support.transform3d&&a.push("supports3d");c.support.ios5&&e.useTouchScroll&&a.push("touchscroll");e.fullScreenClass&&!0===window.navigator.standalone&&a.push(e.fullScreenClass,e.statusBar);i.addClass(a.join(" ")).bind("click",C).bind("orientationchange",H).bind("submit",A).bind("tap",L).bind(c.support.touch?"touchstart":"mousedown",K).trigger("orientationchange");c(window).bind("hashchange",F);a=location.hash;m=0===c("#jqt > .current").length?c("#jqt > *:first-child").addClass("current"):
-c("#jqt > .current");x(m.attr("id"));v(m);1===c(a).length&&p(a)});return o={addAnimation:n,animations:l,getOrientation:function(){return r},goBack:q,insertPages:z,goTo:p,history:k,settings:e,submitForm:A}};jQTouchCore.prototype.extensions=[];window.Zepto&&function(j){j.jQTouch=function(n){n.framework=j;return jQTouchCore(n)};j.fn.prop=j.fn.attr;j.jQTouch.addExtension=function(j){jQTouchCore.prototype.extensions.push(j)}}(Zepto)})();
+/*
+
+            _/    _/_/    _/_/_/_/_/                              _/
+               _/    _/      _/      _/_/    _/    _/    _/_/_/  _/_/_/
+          _/  _/  _/_/      _/    _/    _/  _/    _/  _/        _/    _/
+         _/  _/    _/      _/    _/    _/  _/    _/  _/        _/    _/
+        _/    _/_/  _/    _/      _/_/      _/_/_/    _/_/_/  _/    _/
+       _/
+    _/
+
+    Created by David Kaneda <http://www.davidkaneda.com>
+    Maintained by Thomas Yip <http://beedesk.com/>
+    Sponsored by Sencha Labs <http://www.sencha.com/>
+    Special thanks to Jonathan Stark <http://www.jonathanstark.com/>
+
+    Documentation and issue tracking on GitHub <http://github.com/senchalabs/jQTouch/>
+
+    (c) 2009-2011 Sencha Labs
+    jQTouch may be freely distributed under the MIT license.
+
+*/
+(function() {
+
+    jQTouchCore = function(options) {
+        // Initialize internal jQT variables
+        var $ = options.framework,
+            $body,
+            $head=$('head'),
+            history=[],
+            newPageCount=0,
+            jQTSettings={},
+            $currentPage='',
+            orientation='portrait',
+            touchSelectors=[],
+            publicObj={},
+            tapBuffer=100, // High click delay = ~350, quickest animation (slide) = 250
+            extensions=jQTouchCore.prototype.extensions,
+            animations=[],
+            hairExtensions='',
+            defaults = {
+                addGlossToIcon: true,
+                backSelector: '.back, .cancel, .goback',
+                cacheGetRequests: true,
+                debug: true,
+                defaultAnimation: 'slideleft',
+                fixedViewport: true,
+                formSelector: 'form',
+                fullScreen: true,
+                fullScreenClass: 'fullscreen',
+                icon: null,
+                icon4: null, // available in iOS 4.2 and later.
+                preloadImages: false,
+                startupScreen: null,
+                statusBar: 'default', // other options: black-translucent, black
+                submitSelector: '.submit',
+                touchSelector: 'a, .touch',
+                trackScrollPositions: true,
+                useAnimations: true,
+                useFastTouch: true,
+                useTouchScroll: true,
+                animations: [ // highest to lowest priority
+                    {name:'cubeleft', selector:'.cubeleft, .cube', is3d: true},
+                    {name:'cuberight', selector:'.cuberight', is3d: true},
+                    {name:'dissolve', selector:'.dissolve'},
+                    {name:'fade', selector:'.fade'},
+                    {name:'flipleft', selector:'.flipleft, .flip', is3d: true},
+                    {name:'flipright', selector:'.flipright', is3d: true},
+                    {name:'pop', selector:'.pop', is3d: true},
+                    {name:'swapleft', selector:'.swap', is3d: true},
+                    {name:'slidedown', selector:'.slidedown'},
+                    {name:'slideright', selector:'.slideright'},
+                    {name:'slideup', selector:'.slideup'},
+                    {name:'slideleft', selector:'.slideleft, .slide, #jqt > * > ul li a'}
+                ]
+            }; // end defaults
+
+        function warn(message) {
+            if (window.console !== undefined && jQTSettings.debug === true) {
+                console.warn(message);
+            }
+        }
+        function addAnimation(animation) {
+            if (typeof(animation.selector) === 'string' && typeof(animation.name) === 'string') {
+                animations.push(animation);
+            }
+        }
+        function addPageToHistory(page, animation) {
+            history.unshift({
+                page: page,
+                animation: animation,
+                hash: '#' + page.attr('id'),
+                id: page.attr('id')
+            });
+        }
+
+        // Unfortunately, we can not assume the "tap" event
+        // is being used for links, forms, etc.
+        function clickHandler(e) {
+
+            // Figure out whether to prevent default
+            var $el = $(e.target);
+
+            // Find the nearest tappable ancestor
+            if (!$el.is(touchSelectors.join(', '))) {
+                $el = $(e.target).closest(touchSelectors.join(', '));
+            }
+
+            // Prevent default if we found an internal link (relative or absolute)
+            if ($el && $el.attr('href') && !$el.isExternalLink()) {
+                e.preventDefault();
+            } else {
+            }
+
+            // Trigger a tap event if touchstart is not on the job
+            if ($.support.touch) {
+            } else {
+                $(e.target).trigger('tap', e);
+            }
+
+        }
+        function doNavigation(fromPage, toPage, animation, goingBack) {
+
+            goingBack = goingBack ? goingBack : false;
+
+            // Error check for target page
+            if (toPage === undefined || toPage.length === 0) {
+                $.fn.unselect();
+                return false;
+            }
+
+            // Error check for fromPage===toPage
+            if (toPage.hasClass('current')) {
+                $.fn.unselect();
+                return false;
+            }
+
+            // Collapse the keyboard
+            $(':focus').trigger('blur');
+
+            fromPage.trigger('pageAnimationStart', { direction: 'out', back: goingBack });
+            toPage.trigger('pageAnimationStart', { direction: 'in', back: goingBack });
+
+            if ($.support.animationEvents && animation && jQTSettings.useAnimations) {
+                // Fail over to 2d animation if need be
+                if (!$.support.transform3d && animation.is3d) {
+                    animation.name = jQTSettings.defaultAnimation;
+                }
+
+                // Reverse animation if need be
+                var finalAnimationName = animation.name,
+                    is3d = animation.is3d ? 'animating3d' : '';
+
+                if (goingBack) {
+                    finalAnimationName = finalAnimationName.replace(/left|right|up|down|in|out/, reverseAnimation );
+                }
+
+                // Bind internal "cleanup" callback
+                fromPage.bind('webkitAnimationEnd', navigationEndHandler);
+
+                // Trigger animations
+                $body.addClass('animating ' + is3d);
+
+                var lastScroll = window.pageYOffset;
+
+                // Position the incoming page so toolbar is at top of viewport regardless of scroll position on from page
+                if (jQTSettings.trackScrollPositions === true) {
+                    toPage.css('top', window.pageYOffset - (toPage.data('lastScroll') || 0));
+                }
+                
+                toPage.addClass(finalAnimationName + ' in current');
+                fromPage.addClass(finalAnimationName + ' out');
+
+                if (jQTSettings.trackScrollPositions === true) {
+                    fromPage.data('lastScroll', lastScroll);
+                    $('.scroll', fromPage).each(function(){
+                        $(this).data('lastScroll', this.scrollTop);
+                    });
+                }
+
+            } else {
+                toPage.addClass('current in');
+                navigationEndHandler();
+            }
+
+            // Private navigationEnd callback
+            function navigationEndHandler(event) {
+                var bufferTime = tapBuffer;
+
+                if ($.support.animationEvents && animation && jQTSettings.useAnimations) {
+                    fromPage.unbind('webkitAnimationEnd', navigationEndHandler);
+                    fromPage.removeClass('current ' + finalAnimationName + ' out');
+                    toPage.removeClass(finalAnimationName);
+                    $body.removeClass('animating animating3d');
+                    if (jQTSettings.trackScrollPositions === true) {
+                        toPage.css('top', -toPage.data('lastScroll'));
+
+                        // Have to make sure the scroll/style resets
+                        // are outside the flow of this function.
+                        setTimeout(function(){
+                            toPage.css('top', 0);
+                            window.scroll(0, toPage.data('lastScroll'));
+                            $('.scroll', toPage).each(function(){
+                                this.scrollTop = - $(this).data('lastScroll');
+                            });
+                        }, 0);
+                    }
+                } else {
+                    fromPage.removeClass(finalAnimationName + ' out current');
+                    bufferTime += 260;
+                }
+
+                // In class is intentionally delayed, as it is our ghost click hack
+                setTimeout(function(){
+                    toPage.removeClass('in');
+                }, bufferTime);
+
+                // Housekeeping
+                $currentPage = toPage;
+                if (goingBack) {
+                    history.shift();
+                } else {
+                    addPageToHistory($currentPage, animation);
+                }
+
+                fromPage.unselect();
+
+                setHash($currentPage.attr('id'));
+
+                // Trigger custom events
+                toPage.trigger('pageAnimationEnd', { direction:'in', animation: animation});
+                fromPage.trigger('pageAnimationEnd', { direction:'out', animation: animation});
+            }
+
+            return true;
+        }
+        function reverseAnimation(animation) {
+            var opposites={
+                'up' : 'down',
+                'down' : 'up',
+                'left' : 'right',
+                'right' : 'left',
+                'in' : 'out',
+                'out' : 'in'
+            };
+
+            return opposites[animation] || animation;
+        }
+        function getOrientation() {
+            return orientation;
+        }
+        function goBack() {
+
+            // Error checking
+            if (history.length < 1 ) {
+            }
+
+            if (history.length === 1 ) {
+                window.history.go(-1);
+            }
+
+            var from = history[0],
+                to = history[1];
+
+            if (doNavigation(from.page, to.page, from.animation, true)) {
+                return publicObj;
+            } else {
+                return false;
+            }
+
+        }
+        function goTo(toPage, animation) {
+
+            var fromPage = history[0].page;
+
+            if (typeof animation === 'string') {
+                for (var i=0, max=animations.length; i < max; i++) {
+                    if (animations[i].name === animation) {
+                        animation = animations[i];
+                        break;
+                    }
+                }
+            }
+
+            if (typeof toPage === 'string') {
+                var nextPage = $(toPage);
+
+                if (nextPage.length < 1) {
+                    showPageByHref(toPage, {
+                        animation: animation
+                    });
+                    return;
+                } else {
+                    toPage = nextPage;
+                }
+            }
+            if (doNavigation(fromPage, toPage, animation)) {
+                return publicObj;
+            } else {
+                return false;
+            }
+        }
+        function hashChangeHandler(e) {
+            if (location.hash === history[0].hash) {
+                return true;
+            } else if (location.hash === '') {
+                goBack();
+                return true;
+            } else {
+                if( (history[1] && location.hash === history[1].hash) ) {
+                    goBack();
+                    return true;
+                } else {
+                    // Lastly, just try going to the ID...
+                    goTo($(location.hash), jQTSettings.defaultAnimation);
+                }
+            }
+        }
+        function init(options) {
+            jQTSettings = $.extend({}, defaults, options);
+
+            // Preload images
+            if (jQTSettings.preloadImages) {
+                for (var i = jQTSettings.preloadImages.length - 1; i >= 0; i--) {
+                    (new Image()).src = jQTSettings.preloadImages[i];
+                }
+            }
+
+            // Set appropriate icon (retina display available in iOS 4.2 and later.)
+            var precomposed = (jQTSettings.addGlossToIcon) ? '' : '-precomposed';
+            if (jQTSettings.icon) {
+                hairExtensions += '<link rel="apple-touch-icon' + precomposed + '" href="' + jQTSettings.icon + '" />';
+            }
+            if (jQTSettings.icon4) {
+                hairExtensions += '<link rel="apple-touch-icon' + precomposed + '" sizes="114x114" href="' + jQTSettings.icon4 + '" />';
+            }
+            // Set startup screen
+            if (jQTSettings.startupScreen) {
+                hairExtensions += '<link rel="apple-touch-startup-image" href="' + jQTSettings.startupScreen + '" />';
+            }
+
+            // Set viewport
+            if (jQTSettings.fixedViewport) {
+                hairExtensions += '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>';
+            }
+
+            // Set full-screen
+            if (jQTSettings.fullScreen) {
+                hairExtensions += '<meta name="apple-mobile-web-app-capable" content="yes" />';
+                if (jQTSettings.statusBar) {
+                    hairExtensions += '<meta name="apple-mobile-web-app-status-bar-style" content="' + jQTSettings.statusBar + '" />';
+                }
+            }
+
+            // Attach hair extensions
+            if (hairExtensions) {
+                $head.prepend(hairExtensions);
+            }
+        }
+
+        function getAnimation(el) {
+            var animation;
+
+            for (var i=0, max=animations.length; i < max; i++) {
+                if (el.is(animations[i].selector)) {
+                    animation = animations[i];
+                    break;
+                }
+            }
+
+            if (!animation) {
+                animation = jQTSettings.defaultAnimation;
+            }
+            return animation;
+        }
+
+        function insertPages(nodes, animation) {
+
+            var targetPage = null;
+
+            // Call dom.createElement element directly instead of relying on $(nodes),
+            // to work around: https://github.com/madrobby/zepto/issues/312
+            var div = document.createElement('div');
+            div.innerHTML = nodes;
+
+            $(div).children().each(function(index, node) {
+                var $node = $(this);
+                if (!$node.attr('id')) {
+                    $node.attr('id', 'page-' + (++newPageCount));
+                }
+
+                // Remove any existing instance
+                $('#' + $node.attr('id')).remove();
+
+                $body.append($node);
+                $body.trigger('pageInserted', {page: $node});
+
+                if ($node.hasClass('current') || !targetPage) {
+                    targetPage = $node;
+                }
+            });
+            if (targetPage !== null) {
+                goTo(targetPage, animation);
+                return targetPage;
+            } else {
+                return false;
+            }
+        }
+
+        function orientationChangeHandler() {
+            $body.css('minHeight', 1000);
+            scrollTo(0,0);
+            var bodyHeight = window.innerHeight;
+            $body.css('minHeight', bodyHeight);
+
+            orientation = Math.abs(window.orientation) == 90 ? 'landscape' : 'portrait';
+            $body.removeClass('portrait landscape').addClass(orientation).trigger('turn', {orientation: orientation});
+        }
+        function setHash(hash) {
+            // Sanitize
+            location.hash = '#' + hash.replace(/^#/, '');
+        }
+        function showPageByHref(href, options) {
+
+            var defaults = {
+                data: null,
+                method: 'GET',
+                animation: null,
+                callback: null,
+                $referrer: null
+            };
+
+            var settings = $.extend({}, defaults, options);
+
+            if (href != '#') {
+                $.ajax({
+                    url: href,
+                    data: settings.data,
+                    type: settings.method,
+                    success: function (data) {
+                        var firstPage = insertPages(data, settings.animation);
+                        if (firstPage) {
+                            if (settings.method == 'GET' && jQTSettings.cacheGetRequests === true && settings.$referrer) {
+                                settings.$referrer.attr('href', '#' + firstPage.attr('id'));
+                            }
+                            if (settings.callback) {
+                                settings.callback(true);
+                            }
+                        }
+                    },
+                    error: function (data) {
+                        if (settings.$referrer) {
+                            settings.$referrer.unselect();
+                        }
+                        if (settings.callback) {
+                            settings.callback(false);
+                        }
+                    }
+                });
+            } else if (settings.$referrer) {
+                settings.$referrer.unselect();
+            }
+        }
+        function submitHandler(e, callback) {
+
+            $(':focus').trigger('blur');
+
+            e.preventDefault();
+
+            var $form = (typeof(e)==='string') ? $(e).eq(0) : (e.target ? $(e.target) : $(e));
+
+            if ($form.length && $form.is(jQTSettings.formSelector) && $form.attr('action')) {
+                showPageByHref($form.attr('action'), {
+                    data: $form.serialize(),
+                    method: $form.attr('method') || "POST",
+                    animation: getAnimation($form),
+                    callback: callback
+                });
+                return false;
+            }
+            return true;
+        }
+        function submitParentForm($el) {
+
+            var $form = $el.closest('form');
+            if ($form.length === 0) {
+            } else {
+                $form.trigger('submit');
+                return false;
+            }
+            return true;
+        }
+        function supportForTransform3d() {
+
+            var head, body, style, div, result;
+
+            head = document.getElementsByTagName('head')[0];
+            body = document.body;
+
+            style = document.createElement('style');
+            style.textContent = '@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-webkit-transform-3d){#jqt-3dtest{height:3px}}';
+
+            div = document.createElement('div');
+            div.id = 'jqt-3dtest';
+
+            // Add to the page
+            head.appendChild(style);
+            body.appendChild(div);
+
+            // Check the result
+            result = div.offsetHeight === 3;
+
+            // Clean up
+            style.parentNode.removeChild(style);
+            div.parentNode.removeChild(div);
+
+            // Pass back result
+            return result;
+        }
+        function touchStartHandler(e){
+
+            var $el = $(e.target),
+                selectors = touchSelectors.join(', ');
+
+            // Find the nearest tappable ancestor
+            if (!$el.is(selectors)) {
+                $el = $el.closest(selectors);
+            }
+
+            // Make sure we have a tappable element
+            if ($el.length && $el.attr('href')) {
+                $el.addClass('active');
+            }
+
+            // Remove our active class if we move
+            $el.on($.support.touch ? 'touchmove' : 'mousemove', function(){
+                $el.removeClass('active');
+            });
+
+            $el.on('touchend', function(){
+                $el.unbind('touchmove mousemove');
+            });
+
+        }
+        function tapHandler(e){
+
+            // Grab the target element
+            var $el = $(e.target);
+
+            // Find the nearest tappable ancestor
+            if (!$el.is(touchSelectors.join(', '))) {
+                $el = $el.closest(touchSelectors.join(', '));
+            }
+
+            // Make sure we have a tappable element
+            if (!$el.length || !$el.attr('href')) {
+                return false;
+            }
+
+            // Init some vars
+            var target = $el.attr('target'),
+                hash = $el.prop('hash'),
+                href = $el.attr('href'),
+                animation = null;
+
+            if ($el.isExternalLink()) {
+                $el.unselect();
+                return true;
+
+            } else if ($el.is(jQTSettings.backSelector)) {
+                // User clicked or tapped a back button
+                goBack(hash);
+
+            } else if ($el.is(jQTSettings.submitSelector)) {
+                // User clicked or tapped a submit element
+                submitParentForm($el);
+
+            } else if (target === '_webapp') {
+                // User clicked or tapped an internal link, fullscreen mode
+                window.location = href;
+                return false;
+
+            } else if (href === '#') {
+                // Allow tap on item with no href
+                $el.unselect();
+                return true;
+            } else {
+                animation = getAnimation($el);
+
+                if (hash && hash !== '#') {
+                    // Internal href
+                    $el.addClass('active');
+                    goTo($(hash).data('referrer', $el), animation, $el.hasClass('reverse'));
+                    return false;
+                } else {
+                    // External href
+                    $el.addClass('loading active');
+                    showPageByHref($el.attr('href'), {
+                        animation: animation,
+                        callback: function() {
+                            $el.removeClass('loading');
+                            setTimeout($.fn.unselect, 250, $el);
+                        },
+                        $referrer: $el
+                    });
+                    return false;
+                }
+            }
+        }
+
+        // Get the party started
+        init(options);
+
+        // Document ready stuff
+        $(document).ready(function RUMBLE() {
+
+            // Store some properties in a support object
+            if (!$.support) $.support = {};
+            $.support.animationEvents = (typeof window.WebKitAnimationEvent != 'undefined');
+            $.support.touch = (typeof window.TouchEvent != 'undefined') && (window.navigator.userAgent.indexOf('Mobile') > -1) && jQTSettings.useFastTouch;
+            $.support.transform3d = supportForTransform3d();
+
+            $.support.ios5 = /OS (5(_\d+)*) like Mac OS X/i.test(window.navigator.userAgent);
+
+            if (!$.support.touch) {
+            }
+            if (!$.support.transform3d) {
+            }
+
+            // Define public jQuery functions
+            $.fn.isExternalLink = function() {
+                var $el = $(this);
+                return ($el.attr('target') == '_blank' || $el.attr('rel') == 'external' || $el.is('a[href^="http://maps.google.com"], a[href^="mailto:"], a[href^="tel:"], a[href^="javascript:"], a[href*="youtube.com/v"], a[href*="youtube.com/watch"]'));
+            };
+            $.fn.makeActive = function() {
+                return $(this).addClass('active');
+            };
+            $.fn.unselect = function(obj) {
+                if (obj) {
+                    obj.removeClass('active');
+                } else {
+                    $('.active').removeClass('active');
+                }
+            };
+
+            // Add extensions
+            for (var i=0, max=extensions.length; i < max; i++) {
+                var fn = extensions[i];
+                if ($.isFunction(fn)) {
+                    $.extend(publicObj, fn(publicObj));
+                }
+            }
+
+            // Add animations
+            for (var j=0, max_anims=defaults.animations.length; j < max_anims; j++) {
+                var animation = defaults.animations[j];
+                if(jQTSettings[animation.name + 'Selector'] !== undefined){
+                    animation.selector = jQTSettings[animation.name + 'Selector'];
+                }
+                addAnimation(animation);
+            }
+
+            // Create an array of stuff that needs touch event handling
+            touchSelectors.push(jQTSettings.touchSelector);
+            touchSelectors.push(jQTSettings.backSelector);
+            touchSelectors.push(jQTSettings.submitSelector);
+            $(touchSelectors.join(', ')).css('-webkit-touch-callout', 'none');
+
+            // Make sure we have a jqt element
+            $body = $('#jqt');
+            var anatomy_lessons = [];
+
+            if ($body.length === 0) {
+                $body = $(document.body).attr('id', 'jqt');
+            }
+
+            // Add some specific css if need be
+            if ($.support.transform3d) {
+                anatomy_lessons.push('supports3d');
+            }
+            if ($.support.ios5 && jQTSettings.useTouchScroll) {
+                anatomy_lessons.push('touchscroll');
+            }
+
+            if (jQTSettings.fullScreenClass && window.navigator.standalone === true) {
+                anatomy_lessons.push(jQTSettings.fullScreenClass, jQTSettings.statusBar);
+            }
+
+            // Bind events
+            
+            $body
+                .addClass(anatomy_lessons.join(' '))
+                .bind('click', clickHandler)
+                .bind('orientationchange', orientationChangeHandler)
+                .bind('submit', submitHandler)
+                .bind('tap', tapHandler)
+                .bind( $.support.touch ? 'touchstart' : 'mousedown', touchStartHandler)
+                .trigger('orientationchange');
+            
+            $(window).bind('hashchange', hashChangeHandler);
+
+            var startHash = location.hash;
+
+            // Determine what the initial view should be
+            if ($('#jqt > .current').length === 0) {
+                $currentPage = $('#jqt > *:first-child').addClass('current');
+            } else {
+                $currentPage = $('#jqt > .current');
+            }
+            
+            setHash($currentPage.attr('id'));
+            addPageToHistory($currentPage);
+
+            if ($(startHash).length === 1) {
+                goTo(startHash);
+            }
+        });
+
+        // Expose public methods and properties
+        publicObj = {
+            addAnimation: addAnimation,
+            animations: animations,
+            getOrientation: getOrientation,
+            goBack: goBack,
+            insertPages: insertPages,
+            goTo: goTo,
+            history: history,
+            settings: jQTSettings,
+            submitForm: submitHandler
+        };
+        return publicObj;
+    };
+    
+    jQTouchCore.prototype.extensions = [];
+
+    // If Zepto exists, jQTouch will use Zepto. Otherwise, a bridge should initialize
+    // jQTouch. See jqtouch-jquery.js.
+    if (!!window.Zepto) {
+        (function($) {
+            $.jQTouch = function(options) {
+                options.framework = $;
+                return jQTouchCore(options);
+            };
+
+            $.fn.prop = $.fn.attr;
+            
+            // Extensions directly manipulate the jQTouch object, before it's initialized.
+            $.jQTouch.addExtension = function(extension) {
+                jQTouchCore.prototype.extensions.push(extension);
+            };
+        })(Zepto);
+    }
+})(); // Double closure, ALL THE WAY ACROSS THE SKY

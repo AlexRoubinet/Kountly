@@ -31,9 +31,18 @@ body {
 	background: url(../img/bg.gif);
 	height: 100%;
 }
+#jqt{
+	height: 100%;
+}
+#app article:not(.current){
+	display: none;
+}
 #app article{
 	height: 100%;
-	position: relative;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 #app h1{
 	font-size:  5.9375em;
@@ -116,11 +125,14 @@ body {
     text-shadow: none;
     color: transparent;
 }
+#app footer a:active,#app footer a:hover,#app footer a:focus{
+	background-position-x: 140px;
+}
 #app footer a.list{
-	background-position: 0 140px;
+	background-position-y: 140px;
 }
 #app footer a.setting{
-	background-position: 0 280px;
+	background-position-y: 280px;
 }
 /* en landscape la taille dépend de la hauteur */
 @media only screen  and (orientation: landscape) {	

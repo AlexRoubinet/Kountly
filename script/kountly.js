@@ -27,11 +27,11 @@ function Kountly(){
 	};
 	
 	// controll
-	$('#app').find('a').on('click',function(e){
-		e.preventDefault();
+/*	$('#app').find('a').on('click',function(e){
+		//e.preventDefault();
 		console.log($(this).data('action'));
 		self[$(this).data('action')]();
-	});
+	});*/
 	
 	//view
 	
@@ -39,4 +39,9 @@ function Kountly(){
 	
 }
 
-$(function(){new Kountly();$.jQTouch(});
+$(function(){
+	new Kountly();
+});
+$.jQTouch({
+	slideSelector: '#app li a'
+});

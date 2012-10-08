@@ -18,5 +18,170 @@ html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre
 .clearfix:after { clear: both; }
 
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
-
 .clearfix { zoom: 1; }
+
+
+
+/* Fade */
+#jqt .in {
+  z-index: 10;
+}
+#jqt .in, #jqt .out {
+  -webkit-animation-duration: 250ms;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+}
+#jqt .fade.in {
+  -webkit-animation-name: fadeIn; }
+
+#jqt .fade.out {
+  z-index: 10;
+  -webkit-animation-name: fadeOut; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+
+  100% {
+    opacity: 1; } }
+
+/* Disolve */
+#jqt .dissolve.in {
+  -webkit-animation-name: dissolveIn; }
+
+#jqt .dissolve.out {
+  -webkit-animation-name: dissolveOut; }
+
+@-webkit-keyframes dissolveIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes dissolveOut {
+  0% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+/* #Popin' */
+#jqt .pop.in {
+  -webkit-animation-name: popIn; }
+
+#jqt .pop.out {
+  -webkit-animation-name: popOut; }
+
+@-webkit-keyframes popIn {
+  0% {
+    -webkit-transform: scale(0.2);
+    opacity: 0; }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1; } }
+
+@-webkit-keyframes popOut {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 1; }
+
+  100% {
+    -webkit-transform: scale(0.2);
+    opacity: 0; } }
+
+/* Slide Left */
+#jqt .slideleft.in {
+  -webkit-animation-name: slideLeftIn; }
+
+#jqt .slideleft.out {
+  -webkit-animation-name: slideLeftOut; }
+
+@-webkit-keyframes slideLeftIn {
+  0% {
+    -webkit-transform: translateX(100%); }
+
+  100% {
+    -webkit-transform: translateX(0); } }
+
+@-webkit-keyframes slideLeftOut {
+  0% {
+    -webkit-transform: translateX(0px); }
+
+  100% {
+    -webkit-transform: translateX(-100%); } }
+
+/* Slide Right */
+#jqt .slideright.in {
+  -webkit-animation-name: slideRightIn; }
+
+#jqt .slideright.out {
+  -webkit-animation-name: slideRightOut; }
+
+@-webkit-keyframes slideRightIn {
+  0% {
+    -webkit-transform: translateX(-100%); }
+
+  100% {
+    -webkit-transform: translateX(0); } }
+
+@-webkit-keyframes slideRightOut {
+  0% {
+    -webkit-transform: translateX(0); }
+
+  100% {
+    -webkit-transform: translateX(100%); } }
+
+/* Slide Up */
+#jqt .slideup.in {
+  z-index: 10;
+  -webkit-animation-name: slideUpIn; }
+
+#jqt .slideup.out {
+  z-index: 0;
+  -webkit-animation-name: slideUpOut; }
+
+@-webkit-keyframes slideUpIn {
+  0% {
+    -webkit-transform: translateY(100%); }
+
+  100% {
+    -webkit-transform: translateY(0); } }
+
+@-webkit-keyframes slideUpOut {
+  0% {
+    -webkit-transform: translateY(0); }
+
+  100% {
+    -webkit-transform: translateY(0); } }
+
+/* Slide Down */
+#jqt .slidedown.in {
+  z-index: 0;
+  -webkit-animation-name: slideDownIn; }
+
+#jqt .slidedown.out {
+  z-index: 10;
+  -webkit-animation-name: slideDownOut; }
+
+@-webkit-keyframes slideDownIn {
+  0% {
+    -webkit-transform: translateY(0); }
+
+  100% {
+    -webkit-transform: translateY(0); } }
+
+@-webkit-keyframes slideDownOut {
+  0% {
+    -webkit-transform: translateY(0); }
+
+  100% {
+    -webkit-transform: translateY(100%); } }
