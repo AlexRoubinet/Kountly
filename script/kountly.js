@@ -27,6 +27,17 @@ function Kountly(){
 	};
 	
 	// controll
+	$('#list').find('form').on('submit',function(e){
+		$('#list').find('ul').append(
+			('<li>\
+				<b>1</b>\
+				<p>{titre}</p>\
+				<small>{date}</small>\
+				<a href="#" data-action="add"></a>\
+			</li>'
+			).replace('{titre}',$('#list').find('input[type="text"]').val())
+		);
+	});
 /*	$('#app').find('a').on('click',function(e){
 		//e.preventDefault();
 		console.log($(this).data('action'));

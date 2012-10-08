@@ -140,7 +140,7 @@ body {
 }
 
 /* LIST */
-#app #list input{
+#app #list input[type="text"]{
 	background: url(../img/wplus.png) 7.00934579% center no-repeat,
 				-webkit-gradient(linear, left top, left bottom, from(#e21d88), to(#b7146c));
 	font-size: 4.5em;
@@ -149,16 +149,17 @@ body {
 	color: #fff;
 	padding: 0 15.625% 0 33.75%;
 }
-#app #list header a{
+#app #list header input[type="reset"]{
 	position: absolute;
 	top: 0;
 	right: 0;
 	height: 116px;
 	width: 15.625%;
 	background: url(../img/wdelete.png) no-repeat center center;
+	border: none;
 }
-#app #list header a:active,
-#app #list header a:hover{
+#app #list header input[type="reset"]:active,
+#app #list header input[type="reset"]:hover{
 	opacity: 0.5;
 }
 
