@@ -61,7 +61,7 @@ body {
 	/*padding: 1.9% 0 01.84782609%;*/
 	padding: 12px 0 12px;
 }
-#app section{
+#app #home section{
 	/*width: 77.8%;*/
 	width: 496px;
 	height: 496px;
@@ -71,7 +71,7 @@ body {
 	border-radius: 496px;
 	box-shadow: 0 2px 1.3px #000000 inset, 0 -3em 4.5em inset;
 }
-#app section p{
+#app #home section p{
 	width: 87.0967742%;
 	height: 87.0967742%;
 	/*padding-top: 87.0967742%;*/
@@ -130,10 +130,13 @@ body {
 	background-position-x: 140px;
 }
 #app footer a.list{
-	background-position-y: 140px;
+	background-position-y: -140px;
 }
 #app footer a.setting{
-	background-position-y: 280px;
+	background-position-y: -280px;
+}
+#app footer a.home{
+	background-position-y: -420px;
 }
 
 /* LIST */
@@ -158,6 +161,51 @@ body {
 #app #list header a:hover{
 	opacity: 0.5;
 }
+
+#app #list section li{
+	background: #fff;
+	width: 84.375%;
+	padding-right: 15.625%;
+	height: 119px;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+#app #list li b{
+	font-weight: normal;
+	font-size: 7.5em;
+	line-height: 1.1em;
+	display: block;
+	float: left;
+	height: 100%;
+	padding-left: 07.77777778%;
+	width: 31.6666666%;
+}
+#app #list li p{
+	float: left;
+	font-size: 4.5em;
+	width: 60.3703704%;
+}
+#app #list li small{
+	font-size: 1.5em;
+	color: #e5e5e5;
+	display: block;
+	float: left;
+	width: 60.3703704%;
+}
+#app #list section li a{
+	display: block;
+	width: 15.625%;
+	background: url(../img/arrow.png) no-repeat center center;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#app #list section li a:active,
+#app #list section li a:hover{
+	opacity: 0.5;
+}
+
 
 /* en landscape la taille dépend de la hauteur */
 @media only screen  and (orientation: landscape) {	
