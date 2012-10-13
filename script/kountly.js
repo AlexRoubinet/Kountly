@@ -13,6 +13,11 @@ $(window).resize(function() {
 function Kountly(){
 	var self = this;
 	
+	//init view
+	$('#list header').hide();
+	$('#home section').hide();
+	
+	
 	function Counter(init){
 		this.key = (new Date()).getTime();
 		this.counter = init.counter;
@@ -20,18 +25,29 @@ function Kountly(){
 		this.date = init.date;
 		this.save = function(){
 			localStorage.setItem(this.key,JSON.stringify(this));
-			self.counters.add(this.key);
+			self.counters.add(this);
 			this.render();
 		};
 		this.render = function(){
-			$('#list').find('ul').append(
+			$('#list').find('section ul').append(
 				('<li>\
-					<b>1</b>\
+					<b>{counter}</b>\
 					<p>{title}</p>\
 					<small>{date}</small>\
 					<a href="#" data-action="add"></a>\
 				</li>'
-				).replace('{title}',this.title)
+				).replace('{counter}',this.counter)
+				.replace('{title}',this.title)
+				.replace('{date}',this.date)
+			);
+			$('#home').find('section ul').append(
+				('<li>\
+					<p>\
+						<b>{counter}<br/><i>{title}</i></b>\
+					</p>\
+				</li>'
+				).replace('{counter}',this.counter)
+				.replace('{title}',this.title)
 				.replace('{date}',this.date)
 			);
 		};
@@ -41,8 +57,9 @@ function Kountly(){
 	function Counters(){
 		this.list = JSON.parse(localStorage.getItem('counters')) || [];
 		
-		this.add = function(c){console.log(this.list);
-			this.list.push(c);
+		this.add = function(c){
+			$(document).trigger('counter:added',c);
+			this.list.push(c.key);
 			localStorage.setItem('counters',JSON.stringify(this.list));
 		}
 		
@@ -57,7 +74,19 @@ function Kountly(){
 		return this;
 	}
 	
+	
+	
+	//init logic
 	this.counters = new Counters();
+	if(this.counters.list.length > 0) $('#home section').show(); 
+	$(document).on('counter:added',function(e,counter){
+		$('#list header').hide();
+		$('#home section').show();
+	});
+	$('a').on('click',function(){
+		if($(this).is('.plus')) $('#list header').show();
+		else $('#list header').hide();
+	});
 	
 	
 	//Actions 
