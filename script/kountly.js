@@ -30,7 +30,7 @@ function Kountly(){
 		};
 		this.render = function(){
 			$('#list').find('section ul').append(
-				('<li>\
+				('<li><span class="plus"></span>\
 					<b>{counter}</b>\
 					<p>{title}</p>\
 					<small>{date}</small>\
@@ -50,6 +50,9 @@ function Kountly(){
 				.replace('{title}',this.title)
 				.replace('{date}',this.date)
 			);
+			$('#list').find('section li').on('longTap',function(){
+				$(this).
+			})
 		};
 		return this;
 	}
@@ -74,7 +77,9 @@ function Kountly(){
 		return this;
 	}
 	
-	
+	$('#app').on('swipe',function(){
+	//	alert('tap');
+	});
 	
 	//init logic
 	this.counters = new Counters();
@@ -82,12 +87,24 @@ function Kountly(){
 	$(document).on('counter:added',function(e,counter){
 		$('#list header').hide();
 		$('#home section').show();
+		
+		$('#list section li').on('tap',function(e){
+			alert('tap');
+		});
+		
+		$('#list section li')
+			.off('swipeLeft')
+			.on('swipeLeft',function(e){
+				alert('swipe');
+		});
 	});
 	$('a').on('click',function(){
 		if($(this).is('.plus')) $('#list header').show();
 		else $('#list header').hide();
 	});
-	
+	$('#list').on('swipeDown',function(){
+		$('#list').find('header').show();
+	});
 	
 	//Actions 
 	this.new_counter = function(text){

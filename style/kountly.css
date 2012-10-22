@@ -172,10 +172,11 @@ body {
 #app #list section li{
 	background: #fff;
 	width: 84.375%;
-	padding-right: 15.625%;
+	padding: 0 15.625% 0 18.75%;
 	height: 119px;
 	border-bottom: 1px solid #e5e5e5;
 	position: relative;
+	margin-left: -18.75%;
 }
 #app #list li b{
 	font-weight: normal;
@@ -212,7 +213,15 @@ body {
 #app #list section li a:hover{
 	opacity: 0.5;
 }
-
+#app #list section li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 15.75%;
+	background: url(../img/wplus.png) center center no-repeat,
+				-webkit-gradient(linear, left top, left bottom, from(#e21d88), to(#b7146c));
+}
 
 /* en landscape la taille dépend de la hauteur */
 @media only screen  and (orientation: landscape) {	
