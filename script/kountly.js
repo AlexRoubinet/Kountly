@@ -51,8 +51,8 @@ function Kountly(){
 				.replace('{date}',this.date)
 			);
 			$('#list').find('section li').on('longTap',function(){
-				$(this).
-			})
+				//$(this).
+			});
 		};
 		return this;
 	}
